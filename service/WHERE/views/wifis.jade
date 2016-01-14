@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	table
+		tr
+			th 编号
+			th SSID
+			th 标签
+		- for (var i = 0; i < wifis.length; ++i) {
+		tr
+			td #{wifis[i].id}
+			td #{wifis[i].ssid}
+			td #{wifis[i].label}
+		- }
