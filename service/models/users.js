@@ -1,31 +1,31 @@
 var db = require('../config/settings').db;
 
-//var users = [
-//  { id : 1, name: 'withwind',	deviceId : '1'},
-//  { id : 2, name: 'hunan',		deviceId : '2'},
-//];
-
 var User = db.define('users', {
 		id			:Number,
         name		:String,
         deviceId	:String
+    }, {
+    	methods : {
+    		user_name: function() {
+    			return this.name;
+			}
+    	}
     }
 );
 
 module.exports = User;
 
-User.register = function(name, deviceId) {
+User.register = function(name, deviceId, callback) {
 	newUser = {};
 	newUser.name = name;
 	newUser.deviceId = deviceId;
-	console.log(name);
-	User.create(newUser, function(err, results) {
-		console.log(err);
+	User.create(newUser, function(err, user) {
+		if (callback) callback(err, user);
 	});
 };
 
-User.getUser = function(deviceId) {
-	return User.one({'deviceId' : deviceId}, function(err, User) {
-		console.log(err);
+User.findByDeviceId = function(deviceId, callback) {
+	return User.one({'deviceId' : deviceId}, function(err, user) {
+		if (callback) callback(err, user);
 	});
 }

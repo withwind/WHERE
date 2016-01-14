@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var orm = require('orm');
 
 var opts = {
-  database : "where",
+  database : "WHERE",
   protocol : "mysql",
   host : "127.0.0.1",
   user : "root",
