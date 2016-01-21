@@ -23,7 +23,7 @@ router.get('/list/:deviceId', function(req, res, next) {
 	var user_device_id = req.params.deviceId
 
 	Wifi.listByDeviceId(user_device_id, function(err, wifis) {
-		if （wifis != null) {
+		if (wifis != null) {
 			res.render('wifis', {'wifis': wifis});
 		}
 	});
