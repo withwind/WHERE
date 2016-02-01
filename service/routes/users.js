@@ -47,8 +47,8 @@ router.get('/:deviceId/at/:ssid', function(req, res, next) {
 		} else {
 			var isAt = event.event;
 			var isAtString = isAt ? ' 在 ' : ' 不在 ';
-			//res.send(user_device_id + isAtString + ssid);
-			res.render('result', {'isAt': isAt});
+			res.send(user_device_id + isAtString + ssid);
+			//res.render('result', {'isAt': isAt});
 		}
 	});
 })
